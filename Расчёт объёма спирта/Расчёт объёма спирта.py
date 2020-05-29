@@ -6,8 +6,8 @@ root.resizable(width=False, height=False)
 root.geometry('450x325')
 root.title('Расчёт объёма спирта 1.0')
 
-#Ставим иконку для заголовка приложения
 try:
+    #Ставим иконку для заголовка приложения
     root.iconbitmap(r'alc.ico')
 except:
     #Если иконки в каталоге нет, то ничего не делаем
@@ -79,6 +79,18 @@ def clear(event):
     EntryC.delete(0, END) # берем текст из второго поля: Укажите, какую в итоге крепость хотите получить
     EntryD.delete(0, END) # очищаем текстовое поле полностью
 
+#Запуск окна справки
+def reference(event):
+    root1 = Tk()
+    root1.resizable(width=False, height=False)
+    root1.geometry('300x300')
+    root1.title('Справка')
+    root1.focus_force()
+
+#Закрыть главное окно
+def exit_root(event):
+    root.quit()
+
 #Расчёт по заданным параметрам
 button=Button(root, text='Рассчитать', fg="black", font="Atial 10")
 button.pack()
@@ -89,11 +101,23 @@ button.place(relx=0.01, rely=0.66)
 root.bind('<Return>',koef)
 #Привязываем кнопку Delete чтобы отчищать все строки
 root.bind('<Delete>',clear)
+#Вызов окна справки
+root.bind('<F1>', reference)
+#Закрыть главное окно и все дочерние окна через ESC
+root.bind('<Escape>', exit_root)
+#Закрыть главное окно и все дочерние окна через крестик на форме
+root.bind('<Destroy>', exit_root)
 
 #Отчистка всех полей
-button=Button(root, text='Очистить', fg="black", font="Atial 10")
-button.pack()
-button.bind("<Button>", clear)
-button.place(relx=0.2, rely=0.66)
+button1=Button(root, text='Очистить', fg="black", font="Atial 10")
+button1.pack()
+button1.bind("<Button>", clear)
+button1.place(relx=0.2, rely=0.66)
+
+#Справка
+button2=Button(root, text='Справка', fg="black", font="Atial 10")
+button2.pack()
+button2.bind("<Button>", reference)
+button2.place(relx=0.36, rely=0.66)
 
 root.mainloop()
