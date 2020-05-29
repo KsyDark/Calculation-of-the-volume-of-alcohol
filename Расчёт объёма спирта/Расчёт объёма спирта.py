@@ -82,6 +82,11 @@ button.pack()
 button.bind("<Button>", koef)
 button.place(relx=0.01, rely=0.66)
 
+#Привязываем кнопку Enter, чтобу запускать Расчёт.
+root.bind('<Return>',koef)
+#Привязываем кнопку Delete чтобы отчищать все строки
+root.bind('<Delete>',clear)
+
 #Отчистка всех полей
 button=Button(root, text='Очистить', fg="black", font="Atial 10")
 button.pack()
