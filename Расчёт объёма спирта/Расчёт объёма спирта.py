@@ -89,7 +89,7 @@ def reference(event):
 
     lab=Label(root1, justify=LEFT, text='Расчёт объёма спирта 1.0. \n\nДанная программа предназначена \nдля ситуации, когда необходимо разбавить \nопределённый объём алкоголя, \nс высокой до более низкой крепости. \n\nГорячие клавиши\nEnter = Расчитать\nDelete = Очистить\nF1 = Справка\nEsc = Закрыть окно', width=50, height=50, fg="black", font="Atial 12")
     lab.pack()
-    lab.place(x=-50,y=-370)
+    lab.place(x=-50,y=-330)
 
 #Закрыть главное окно
 def exit_root(event):
