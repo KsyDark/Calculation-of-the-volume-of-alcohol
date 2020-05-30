@@ -83,6 +83,7 @@ def clear(event):
 def reference(event):
     root1 = Tk()
 
+    root1.resizable(width=False, height=False)
     root1.geometry('350x300')
     root1.title('Справка')
     root1.focus_force()
