@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 
 #Главное окно программы
 root = Tk()
@@ -12,9 +13,6 @@ try:
 except:
     #Если иконки в каталоге нет, то ничего не делаем
     pass
-
-#Виртуальная картинка для задания размера кнопок в пикселях
-# pixelVirtual = PhotoImage(width=1, height=1)
 
 #Заголовок окна, не путать с заголовком программы
 lable=Label(root, text='Расчёт объёма спирта', width=50, fg="red", bg="black", font="Atial 16")
@@ -79,18 +77,12 @@ def clear(event):
     EntryC.delete(0, END) # берем текст из второго поля: Укажите, какую в итоге крепость хотите получить
     EntryD.delete(0, END) # очищаем текстовое поле полностью
 
-#Запуск окна справки
-def reference(event):
-    root1 = Tk()
-
-    root1.resizable(width=False, height=False)
-    root1.geometry('350x300')
-    root1.title('Справка')
-    root1.focus_force()
-
-    lab=Label(root1, justify=LEFT, text='Расчёт объёма спирта 1.0. \n\nДанная программа предназначена \nдля ситуации, когда необходимо разбавить \nопределённый объём алкоголя, \nс высокой до более низкой крепости. \n\nГорячие клавиши\nEnter = Расчитать\nDelete = Очистить\nF1 = Справка\nEsc = Закрыть окно', width=50, height=50, fg="black", font="Atial 12")
-    lab.pack()
-    lab.place(x=-50,y=-330)
+#Запуск окна справки через Button
+def reference():
+    messagebox.showinfo("Справка", "Расчёт объёма спирта 1.0. \n\nДанная программа предназначена \nдля ситуации, когда необходимо разбавить \nопределённый объём алкоголя, \nс высокой до более низкой крепости. \n\nГорячие клавиши\nEnter = Расчитать\nDelete = Очистить\nF1 = Справка\nEsc = Закрыть окно")
+#Запуск окна справки через F1
+def reference1(event):
+    messagebox.showinfo("Справка", "Расчёт объёма спирта 1.0. \n\nДанная программа предназначена \nдля ситуации, когда необходимо разбавить \nопределённый объём алкоголя, \nс высокой до более низкой крепости. \n\nГорячие клавиши\nEnter = Расчитать\nDelete = Очистить\nF1 = Справка\nEsc = Закрыть окно")
 
 #Закрыть главное окно
 def exit_root(event):
@@ -107,11 +99,9 @@ root.bind('<Return>',koef)
 #Привязываем кнопку Delete чтобы отчищать все строки
 root.bind('<Delete>',clear)
 #Вызов окна справки
-root.bind('<F1>', reference)
+root.bind('<F1>', reference1)
 #Закрыть главное окно и все дочерние окна через ESC
 root.bind('<Escape>', exit_root)
-#Закрыть главное окно и все дочерние окна через крестик на форме
-root.bind('<Destroy>', exit_root)
 
 #Отчистка всех полей
 button1=Button(root, text='Очистить', fg="black", font="Atial 10")
@@ -120,9 +110,8 @@ button1.bind("<Button>", clear)
 button1.place(relx=0.2, rely=0.66)
 
 #Справка
-button2=Button(root, text='Справка', fg="black", font="Atial 10")
+button2=Button(root, text='Справка', fg="black", font="Atial 10", command = reference)
 button2.pack()
-button2.bind("<Button>", reference)
 button2.place(relx=0.36, rely=0.66)
 
 root.mainloop()
